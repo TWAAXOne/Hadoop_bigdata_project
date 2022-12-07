@@ -2,7 +2,8 @@
 
 from pyspark import SparkContext,SparkConf
 from pyspark.sql import SQLContext, SparkSession, HiveContext
-from pyspark.sql.functions import col,explode                                                                                                         
+from pyspark.sql.functions import col,explode
+import requests
                                                                                                                                                                         
 conf = SparkConf().set("spark.jars.packages","org.mongodb.spark:mongo-spark-connector_2.11:2.3.2")
                                                                                                                                                                         

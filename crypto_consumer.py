@@ -6,11 +6,11 @@ from json import loads,dumps
 
 from subprocess import Popen, PIPE
 
-put = Popen(["hadoop", "fs", "-put", "-", "/user/root/Output.json"],stdin=PIPE, bufsize=-1)
+put = Popen(["hadoop", "fs", "-put", "-", "/user/root/output2.json"],stdin=PIPE, bufsize=-1)
 
 consumer = KafkaConsumer(
         
-    'crypto',
+    'crypto2',
 
      bootstrap_servers='sandbox-hdp.hortonworks.com:6667',
 
@@ -24,15 +24,16 @@ consumer = KafkaConsumer(
 
      api_version=(0, 10, 1))
 
-put.stdin.write("[")
+put.stdin.write(b'[')
+print(consumer)
 for message in consumer:
     message = message.value
-    print(dumps(message))
-    put.stdin.write(dumps(message))
-    put.stdin.write(",")
+    print(message)
+    put.stdin.write(str.encode(dumps(message)))
+    put.stdin.write(b",")
  
-put.stdin.write("{}")
-put.stdin.write("]")
+put.stdin.write(b'{}')
+put.stdin.write(b']')
 put.stdin.close()
 put.wait()
 
