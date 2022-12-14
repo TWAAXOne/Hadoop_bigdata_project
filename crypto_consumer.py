@@ -23,11 +23,15 @@ print(consumer) # print the consumer
 for message in consumer:
     message = message.value
     print(message)
+    # Conversion en byte car attend un byte et non un str
     put.stdin.write(str.encode(dumps(message))) # write the data into HDFS
+    # Conversion en byte car attend un byte et non un str
     put.stdin.write(b",")
- 
+
+# Conversion en byte car attend un byte et non un str
 put.stdin.write(b'{}')
 put.stdin.write(b']') # write ']' into HDFSv
+# Conversion en byte car attend un byte et non un str
 put.stdin.close()
 put.wait() # wait for the process to finish
 
