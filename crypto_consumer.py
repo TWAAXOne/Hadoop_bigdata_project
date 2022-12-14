@@ -29,10 +29,14 @@ print(consumer)
 for message in consumer:
     message = message.value
     print(message)
+    # Conversion en byte car attend un byte et non un str
     put.stdin.write(str.encode(dumps(message)))
+    # Conversion en byte car attend un byte et non un str
     put.stdin.write(b",")
- 
+
+# Conversion en byte car attend un byte et non un str
 put.stdin.write(b'{}')
+# Conversion en byte car attend un byte et non un str
 put.stdin.write(b']')
 put.stdin.close()
 put.wait()
