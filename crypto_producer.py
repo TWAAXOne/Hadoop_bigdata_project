@@ -1,4 +1,4 @@
-#Kafka Producer- Produces the Streaming API Data
+# Kafka Producer- Produces the Streaming API Data
 from json import dumps
 from kafka import KafkaProducer
 import tweepy
@@ -29,5 +29,5 @@ bitcoin_tweets = api.search_tweets("Bitcoin chart", count=10, lang="en", tweet_m
 
 # Kafka Producer
 for tweet in bitcoin_tweets:
-    print(tweet._json) # print the tweet
-    producer.send('crypto2', tweet) # send the tweet to the topic crypto2
+    print(tweet._json)  # print the tweet
+    producer.send('crypto2', tweet._json)  # send the tweet to the topic crypto2
