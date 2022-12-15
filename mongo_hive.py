@@ -5,6 +5,7 @@ from pyspark.sql import SQLContext, SparkSession, HiveContext
 from pyspark.sql.functions import col,explode
 import requests
 import pandas
+import time
                                                                                                                                                                         
 conf = SparkConf().set("spark.jars.packages","org.mongodb.spark:mongo-spark-connector_2.11:2.3.2")
                                                                                                                                                                         
@@ -27,13 +28,16 @@ df = spark.read.option("multiline", "true").json("hdfs://sandbox-hdp.hortonworks
                                                                                                                                                                         
 #df.printSchema()
 
-#spark.sql("drop database testdb")
-                                                                                                                                                                        
+#spark.sql("testdb.test2")
+#time.sleep(10)
 #Database on Hive                                                                                                                                                       
 spark.sql("create database testdb")
 
 print('Voici le Dataframe : ', df)
 
-df.write.mode("overwrite").saveAsTable("testdb.test2")
+df.write.mode("overwrite").saveAsTable("testdb.test3")
 
 spark.sql("SHOW DATABASES").show()
+
+df = spark.sql("SELECT * FROM testdb.test3")
+df.show()
