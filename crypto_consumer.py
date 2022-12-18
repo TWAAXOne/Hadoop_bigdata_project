@@ -6,10 +6,10 @@ from subprocess import Popen, PIPE
 
 
 # Kafka Consumer
-put = Popen(["hadoop", "fs", "-put", "-", "/user/maria_dev/output2.json"],stdin=PIPE, bufsize=-1) # put the data into HDFS
+put = Popen(["hadoop", "fs", "-put", "-", "/user/root/sortie.json"],stdin=PIPE, bufsize=-1) # put the data into HDFS
 
 consumer = KafkaConsumer(
-    'crypto2', # topic name
+    'monApp', # topic name
      bootstrap_servers='sandbox-hdp.hortonworks.com:6667',
      auto_offset_reset='earliest',
      enable_auto_commit=True,
