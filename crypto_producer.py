@@ -3,6 +3,7 @@ from json import dumps
 from kafka import KafkaProducer
 import tweepy
 import configparser
+from datetime import datetime, timedelta
 import requests
 
 # Kafka Producer
@@ -26,7 +27,8 @@ auth.set_access_token(access_token, access_token_secret)
 
 # Twitter API
 api = tweepy.API(auth)
-bitcoin_tweets = api.search_tweets("Bitcoin chart", count=10, lang="en", tweet_mode="extended")
+yesterday = datetime.today() - timedelta(days=1)  # get the date of yesterday
+bitcoin_tweets = api.search_tweets("Bitcoin chart", count=100, lang="en", result_type="mixed", until=yesterday.strftime("%Y-%m-%d"))
 
 # Kafka Producer
 for tweet in bitcoin_tweets:
