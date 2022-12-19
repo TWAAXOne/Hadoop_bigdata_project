@@ -5,6 +5,7 @@ from json import loads, dumps
 from subprocess import Popen, PIPE
 
 # Kafka Consumer
+Popen(["hdfs", "dfs", "-rm", "/user/root/sortie.json"], stdout=PIPE, stderr=PIPE)  # delete the file sortie.json
 put = Popen(["hadoop", "fs", "-put", "-", "/user/root/sortie.json"], stdin=PIPE, bufsize=-1)  # put the data into HDFS
 
 consumer = KafkaConsumer(

@@ -11,7 +11,7 @@ def get_sentiment_score(text):
     if doc.cats['positive'] > doc.cats['negative']:
         sentiment = "positif"
     elif doc.cats['positive'] < doc.cats['negative']:
-        sentiment = "négatif"
+        sentiment = "negatif"
     else:
         sentiment = "neutre"
 
