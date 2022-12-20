@@ -21,4 +21,4 @@ if __name__ == '__main__':
             print(str(i)+'/'+str(len(lines)), repr(lines[i]))  # affiche le numéro de la ligne et la ligne
 
         with open('data_clear.csv', 'w', encoding='latin1') as f:  # écrit le fichier data_clear.csv
-            f.writelines(lines) # écrit toutes les lignes
+            f.writelines(lines)  # écrit toutes les lignes

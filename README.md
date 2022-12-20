@@ -4,7 +4,7 @@ Ce repositories contient les informations sur l'analyse des tweets liée au bitc
 ### A propos du projet
 Ce projet a pour but d'utiliser plusieurs technologies Hadoop. Telle que HDFS, Kafka, Spark, Hive et Zeppelin. 
 1. Récupérer des tweets liés au bitcoin sur Kafka
-2. Grace au producer Kafka, transformer les données récupérer en Json. Puis nous les stockons sur HDFS 
+2. Grace au consumer Kafka, transformer les données récupérer en Json. Puis nous les stockons sur HDFS 
 3. Spark récupère le json et le range dans un Dataframe. Puis, panda le transforme en CSV.
 4. Nettoyer le fichier CSV et ajouter des colonnes liées au sentiment des tweets grâce à un model en machine learning
 5. Stocker le fichier CSV sur Hive manuellement
