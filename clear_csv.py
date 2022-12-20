@@ -12,13 +12,13 @@ if __name__ == '__main__':
         indexText = entete.split(',').index('text') # récupère l'index de la colonne text
 
         for i in range(1, len(lines)):
-            valText = lines[i].split(',')[indexText] # récupère la valeur de la colonne text
-            sentiment = get_sentiment_score(valText) # récupère le sentiment
-            positive_score = get_sentiment_positive(valText) # récupère le score positif
-            negative_score = get_sentiment_negative(valText) # récupère le score négatif
+            valText = lines[i].split(',')[indexText]  # récupère la valeur de la colonne text
+            sentiment = get_sentiment_score(valText)  # récupère le sentiment
+            positive_score = get_sentiment_positive(valText)  # récupère le score positif
+            negative_score = get_sentiment_negative(valText)  # récupère le score négatif
 
             lines[i] = lines[i].strip() + ',' + sentiment + ',' + str(positive_score) + ',' + str(negative_score) + '\n'
-            print(str(i)+'/'+str(len(lines)), repr(lines[i])) # affiche le numéro de la ligne et la ligne
+            print(str(i)+'/'+str(len(lines)), repr(lines[i]))  # affiche le numéro de la ligne et la ligne
 
-        with open('data_clear.csv', 'w', encoding='latin1') as f: # écrit le fichier data_clear.csv
+        with open('data_clear.csv', 'w', encoding='latin1') as f:  # écrit le fichier data_clear.csv
             f.writelines(lines) # écrit toutes les lignes

@@ -2,7 +2,7 @@
 # Donc, nous avons décidé d'essayé de mettre notre json dans une table Hive. Mais nous n'avons pas réussit
 # Au final, nous avons décidé de transformer notre json en csv et de le mettre manuellement dans Hive.
 
-from pyspark.sql import SQLContext, SparkSession, HiveContext
+from pyspark.sql import SparkSession
 
 
 spark = SparkSession.builder \
@@ -23,9 +23,6 @@ df = df.head(df.shape[0] - 5)
 df = df.tail(df.shape[0] - 5)
 print(df)
 
+df = df.drop_duplicates(subset=['text'])  # suppression des doublons dans texts
 print("Conversion en csv")
 df.to_csv('data.csv', index=False)
-
-print("Nettoyage des données du csv")
-# run clean_csv.py
-
